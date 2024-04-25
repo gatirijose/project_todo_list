@@ -1,19 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
+{% extends 'base.html' %}
+
+    {% block title %}
+    Projects
+    {% endblock %}
+       
+{% block content %}
+        
     {% for proj in projects %}
     <center><h3>{{proj.project_name}}</h3></center>
     <p>{{proj.project_details}}</p>
     
     {% if tasks %}
 
-        <table border="3" >
+        <table class="table" >
             <thead>
                 <th>Task</th>
                 <th>Duration(days : hr : min)</th>
@@ -48,6 +47,5 @@
         <br>
             
     {% endfor %}
+{% endblock %}
         
-</body>
-</html>
