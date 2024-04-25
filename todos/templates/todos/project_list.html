@@ -7,40 +7,42 @@
 {% block content %}
         
     {% for proj in projects %}
-    <center><h3>{{proj.project_name}}</h3></center>
+    <center><h3 class="text-success text-underline">{{proj.project_name}}</h3></center>
     <p>{{proj.project_details}}</p>
     
     {% if tasks %}
 
-        <table class="table" >
-            <thead>
-                <th>Task</th>
-                <th>Duration(days : hr : min)</th>
-                <th>Details</th>
-                <th >Progress</th>
-            </thead>
-            <tbody>
-                {% for task in tasks %}
-        
-            {% if task.project.project_name == proj.project_name %}
-                <tr>
-                    <td>{{task.task_name}}</td>
-                    <td>{{task.time_taken}}</td>
-                    <td>{{task.task_details|linebreaks}}</td>
-                    <td>
-                    {% if task.is_completed %}
-                        complete
-                    {% else %}
-                        Pending
-                    {% endif %}
-                        </td>
-                </tr>
-            {% else %}
-                <h2>No tasks</h2>
-            {% endif %}
-        
-        {% endfor %}
-            </tbody>
+        <table class="table table-striped table-hover bg-black" >
+            <div class="container-fluid">
+                <thead>
+                    <th>Task</th>
+                    <th>Duration(days : hr : min)</th>
+                    <th>Details</th>
+                    <th >Progress</th>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+            
+                {% if task.project.project_name == proj.project_name %}
+                    <tr>
+                        <td>{{task.task_name}}</td>
+                        <td>{{task.time_taken}}</td>
+                        <td class="text-break">{{task.task_details|linebreaks}}</td>
+                        <td>
+                        {% if task.is_completed %}
+                            complete
+                        {% else %}
+                            Pending
+                        {% endif %}
+                            </td>
+                    </tr>
+                {% else %}
+                    <h2>No tasks</h2>
+                {% endif %}
+            
+            {% endfor %}
+                </tbody>
+            </div>
         </table>
     {% endif %}
 
