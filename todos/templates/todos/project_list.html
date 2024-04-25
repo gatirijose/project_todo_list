@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% for proj in projects %}
+    <center><h3>{{proj.project_name}}</h3></center>
+    <p>{{proj.project_details}}</p>
+    
+    {% if tasks %}
+
+        <table border="3" >
+            <thead>
+                <th>Task</th>
+                <th>Duration(days : hr : min)</th>
+                <th>Details</th>
+                <th >Progress</th>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+        
+            {% if task.project.project_name == proj.project_name %}
+                <tr>
+                    <td>{{task.task_name}}</td>
+                    <td>{{task.time_taken}}</td>
+                    <td>{{task.task_details|linebreaks}}</td>
+                    <td>
+                    {% if task.is_completed %}
+                        complete
+                    {% else %}
+                        Pending
+                    {% endif %}
+                        </td>
+                </tr>
+            {% else %}
+                <h2>No tasks</h2>
+            {% endif %}
+        
+        {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+        <br>
+            
+    {% endfor %}
+        
+</body>
+</html>
