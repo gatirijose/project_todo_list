@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
-{% load static django_bootstrap5 %}
-    {% block title %}
-    Login
-    {% endblock %}
-       
+{% load django_bootstrap5 %}
+{% block title %}
+    Sign Up
+{% endblock %}
+    
 
 {% block content %}
-<h3 class="text-center">Login</h3>
+<h3 class="text-center">Create an account</h3>
 <br>
     <div class="row">
         <div class="col-md-4"></div>
@@ -16,12 +16,11 @@
                     {% csrf_token %}
                     {% bootstrap_form form %}
                     <br>
-                    <button type="submit" class="btn btn-outline-primary rounded-4">Login</button>
+                    <button type="submit" class="btn btn-outline-primary rounded-4">Sign up</button>
                 </form>
-                <br>
-                <a href="{% url 'sign-up' %}" class="text-primary">need an account?Sign up</a>
             </div>
         </div>
         <div class="col-md-4"></div>
     </div>
 {% endblock %}
+    

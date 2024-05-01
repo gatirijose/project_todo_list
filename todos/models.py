@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Project(models.Model):
@@ -8,6 +9,9 @@ class Project(models.Model):
     date_added = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.project_name
+    def get_absolute_url(self):
+        return reverse("proj_details", kwargs={"pk": self.pk})
+    
 class Task(models.Model):
     task_name = models.CharField(max_length=256)
     project = models.ForeignKey(Project, on_delete=models.CASCADE,related_name='project_tasks', related_query_name='project_tasks')
