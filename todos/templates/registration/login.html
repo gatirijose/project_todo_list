@@ -1,27 +1,38 @@
 {% extends 'base.html' %}
 {% load static django_bootstrap5 %}
-    {% block title %}
-    Login
-    {% endblock %}
-       
+{% load socialaccount %}
+{% block title %}
+Login
+{% endblock %}
+
 
 {% block content %}
 <h3 class="text-center">Login</h3>
 <br>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <div class="container">
-                <form  method="post">
-                    {% csrf_token %}
-                    {% bootstrap_form form %}
-                    <br>
-                    <button type="submit" class="btn btn-outline-primary rounded-4">Login</button>
-                </form>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="container">
+            <form method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
                 <br>
-                <a href="{% url 'sign-up' %}" class="text-primary">need an account?Sign up</a>
-            </div>
+                <button type="submit" class="btn btn-outline-primary rounded-4">Login</button>
+            </form>
+            <br>
+            <a href="{% url 'sign-up' %}" class="text-primary">Need an account?Sign up</a>
+
+            <center>
+                <h3>OR</h3>
+                <h4>Sign in with</h4>
+
+                <br>
+                <a href="{% provider_login_url 'google' %}">
+                    <img src="{% static '/logos/google-logo.png'%}" alt="g-logo" class="img-fluid bg-white rounded-3"
+                        width="30%">
+                </a>
+            </center>
         </div>
         <div class="col-md-4"></div>
     </div>
-{% endblock %}
+    {% endblock %}
