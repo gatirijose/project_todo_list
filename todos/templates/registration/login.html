@@ -20,19 +20,19 @@ Login
                 <button type="submit" class="btn btn-outline-primary rounded-4">Login</button>
             </form>
             <br>
+            <center>
+                <a href="{% provider_login_url 'google' %}" class="btn btn-outline-light"><img
+                        src="{% static 'logos/google-log0.svg' %}" alt=""> Continue with Google</a>
+            </center>
+            <br>
             <a href="{% url 'sign-up' %}" class="text-primary">Need an account?Sign up</a>
 
-            <center>
-                <h3>OR</h3>
-                <h4>Sign in with</h4>
-
-                <br>
-                <a href="{% provider_login_url 'google' %}">
-                    <img src="{% static '/logos/google-logo.png'%}" alt="g-logo" class="img-fluid bg-white rounded-3"
-                        width="30%">
-                </a>
-            </center>
         </div>
         <div class="col-md-4"></div>
     </div>
     {% endblock %}
+    <!--
+    <script src="//accounts.google.com/gsi/client" async></script>
+    <div id="g_id_onload" data-client_id="362769476034-n3vmuna8tpp0tn7292r54a55262n5s2v.apps.googleusercontent.com"
+        data-login_uri="{% url 'google_login_by_token' %}">
+    </div> -->
